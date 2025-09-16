@@ -1,0 +1,78 @@
+<app-confirm-dialog #confirmDialog></app-confirm-dialog>
+<div>
+  <h2>Transacciones</h2>
+
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <select formControlName="transactionType" required>
+      <option value="SALE">Venta</option>
+      <option value="PURCHASE">Compra</option>
+    </select>
+    <select formControlName="productId" required>
+      <option *ngFor="let p of products" [value]="p.id">
+        {{ p.name }} (Stock: {{ p.stock }})
+      </option>
+    </select>
+    <input type="number" formControlName="quantity" placeholder="Cantidad" required/>
+    <input type="number" formControlName="unitPrice" placeholder="Precio unitario" required/>
+    <input type="text" formControlName="details" placeholder="Detalles" />
+    <button type="submit">{{ editingTransaction ? 'Actualizar' : 'Registrar' }}</button>
+    <button type="button" (click)="cancel()">Cancelar</button>
+  </form>
+
+  <hr />
+
+  <h3>Filtrar transacciones</h3>
+  <form [formGroup]="filterForm" (ngSubmit)="applyFilters()">
+    <label>Desde:</label>
+    <input type="date" formControlName="fromDate" (change)="onFromDateChange()" />
+
+    <label>Hasta:</label>
+    <input type="date" formControlName="toDate" [min]="minToDate" />
+
+    <label>Tipo:</label>
+    <select formControlName="transactionType">
+      <option value="">Todos</option>
+      <option value="SALE">Venta</option>
+      <option value="PURCHASE">Compra</option>
+    </select>
+
+    <button type="submit">Filtrar</button>
+    <button type="button" (click)="resetFilters()">Limpiar</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Stock</th>
+        <th>Tipo</th>
+        <th>Cantidad</th>
+        <th>Precio Unitario</th>
+        <th>Total</th>
+        <th>Fecha</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tx of paginatedTransactions">
+        <td>{{ getProductName(tx.productId) }}</td>
+        <td>{{ getProductStock(tx.productId) }}</td>
+        <td>{{ transactionTypeMap[tx.transactionType] || tx.transactionType }}</td>
+        <td>{{ tx.quantity }}</td>
+        <td>{{ tx.unitPrice }}</td>
+        <td>{{ tx.totalPrice }}</td>
+        <td>{{ tx.transactionDate | date:'short' }}</td>
+        <td>
+          <button (click)="edit(tx)">Editar</button>
+          <button (click)="delete(tx.id!)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="page === 1">Anterior</button>
+    Página {{ page }} de {{ totalPages }}
+    <button (click)="nextPage()" [disabled]="page === totalPages">Siguiente</button>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<app-confirm-dialog #confirmDialog></app-confirm-dialog>
+<div>
+  <h2>Productos</h2>
+
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <input formControlName="name" placeholder="Nombre" required />
+    <input formControlName="description" placeholder="Descripción" />
+    <input formControlName="category" placeholder="Categoría" required />
+    <input formControlName="imageUrl" placeholder="URL Imagen" />
+    <input type="number" formControlName="price" placeholder="Precio" required />
+    <input type="number" formControlName="stock" placeholder="Stock" required />
+
+    <button type="submit">{{ editingProduct ? 'Actualizar' : 'Crear' }}</button>
+    <button type="button" (click)="cancel()">Cancelar</button>
+  </form>
+
+  <hr />
+
+  <h3>Filtrar productos</h3>
+  <form [formGroup]="filterForm" (ngSubmit)="applyFilters()">
+    <input formControlName="name" placeholder="Nombre" />
+    <input formControlName="category" placeholder="Categoría" />
+    <button type="submit">Buscar</button>
+    <button type="button" (click)="resetFilters()">Limpiar</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Categoría</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of paginatedProducts">
+        <td>{{ p.name }}</td>
+        <td>{{ p.description }}</td>
+        <td>{{ p.category }}</td>
+        <td>{{ p.price }}</td>
+        <td>{{ p.stock }}</td>
+        <td>
+          <button (click)="edit(p)">Editar</button>
+          <button (click)="delete(p.id!)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="page === 1">Anterior</button>
+    Página {{ page }} de {{ totalPages }}
+    <button (click)="nextPage()" [disabled]="page === totalPages">Siguiente</button>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+.app-header {
+  background-color: #40739e;
+  padding: 15px 20px;
+  color: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+
+  nav {
+    display: flex;
+    gap: 20px;
+
+    a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.2s;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &.active {
+        border-bottom: 2px solid #44bd32;
+      }
+    }
+  }
+}
+
+.app-content {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}

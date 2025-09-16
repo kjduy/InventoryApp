@@ -1,0 +1,169 @@
+div {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f6fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+h2, h3 {
+  color: #2f3640;
+  margin-bottom: 15px;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+
+  input, select {
+    flex: 1 1 150px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #dcdde1;
+    font-size: 14px;
+  }
+
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  button[type="submit"] {
+    background-color: #44bd32;
+    color: white;
+  }
+
+  button[type="button"] {
+    background-color: #718093;
+    color: white;
+  }
+}
+
+p {
+  margin: 10px 0;
+  font-weight: bold;
+
+  &::before {
+    content: 'ℹ️ ';
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+  thead {
+    background-color: #40739e;
+    color: white;
+    text-align: left;
+
+    th {
+      padding: 12px;
+      font-size: 14px;
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid #dcdde1;
+      transition: background 0.2s;
+
+      &:hover {
+        background-color: #f1f2f6;
+      }
+
+      td {
+        padding: 12px;
+        font-size: 14px;
+
+        button {
+          margin-right: 5px;
+          padding: 6px 12px;
+          font-size: 12px;
+
+          &:first-child {
+            background-color: #e1b12c;
+            color: white;
+          }
+
+          &:last-child {
+            background-color: #e84118;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+.pagination {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  button {
+    background-color: #00a8ff;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:disabled {
+      background-color: #dcdde1;
+      cursor: not-allowed;
+    }
+  }
+}
+
+form[formGroupName] {
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  input {
+    flex: 1 1 200px;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #dcdde1;
+  }
+
+  button {
+    padding: 8px 14px;
+    font-weight: bold;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+
+    &:first-child {
+      background-color: #44bd32;
+      color: white;
+    }
+
+    &:last-child {
+      background-color: #718093;
+      color: white;
+    }
+  }
+}

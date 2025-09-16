@@ -1,0 +1,10 @@
+<div class="overlay" *ngIf="visible">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+    <h3 id="dialogTitle">{{ title }}</h3>
+    <p>{{ message }}</p>
+    <div class="buttons">
+      <button class="confirm" (click)="confirm()">{{ confirmText }}</button>
+      <button class="cancel" (click)="cancel()">{{ cancelText }}</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+# Build outputs
+bin/
+obj/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.resharper
+
+# Visual Studio files
+.vs/
+
+# Rider files
+.idea/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Backup files
+*~ 
+*.bak
+*.swp
+
+# Publish outputs
+publish/
+
+# Environment & secrets
+appsettings.Development.json
+appsettings.Production.json
+appsettings.json
+secrets.json
+
+# Package managers
+.nuget/
+packages/
+
+# System files
+.DS_Store
+Thumbs.db
