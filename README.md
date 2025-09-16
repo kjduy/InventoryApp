@@ -30,7 +30,7 @@ Para ejecutar el proyecto en un entorno local, se necesitan los siguientes compo
 1. Clonar el repositorio:
 
 ```bash
-git clone https://github.com/kjduy/InventoryApp
+git clone https://github.com/kjduy/InventoryApp.git
 cd InventoryAppBackEnd
 cd ProductsService
 ```
